@@ -12,7 +12,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Header />
-        <div style={{ marginTop: '70px' }}>
+        {/* <div style={{ marginTop: '70px' }}> */}
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -33,7 +33,7 @@ const App = () => {
               <Login />
             </Route>
           </Switch>
-        </div>
+        {/* </div> */}
       </BrowserRouter>
     </div>
   );
