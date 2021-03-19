@@ -1,4 +1,4 @@
-import { Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import React from 'react';
 import Form from './Form';
 
