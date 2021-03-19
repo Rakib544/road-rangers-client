@@ -13,7 +13,7 @@ const GetDrawerChoices = () => {
     const goContactPage = () => {
         history.push(`/contact`)
     }
-    const goToDirectionPage = () => {
+    const goToDestinationPage = () => {
         history.push(`/destination`)
     }
     const goToBlogPage = () => {
@@ -22,7 +22,7 @@ const GetDrawerChoices = () => {
     return (
         <ButtonGroup orientation="vertical" color="primary" variant="outlined">
             <Button onClick={goToHomePage}>Home</Button>
-            <Button onClick={goToDirectionPage}>Direction</Button>
+            <Button onClick={goToDestinationPage}>Direction</Button>
             <Button onClick={goToBlogPage}>Blog</Button>
             <Button onClick ={goContactPage}>Contact</Button>
             <Button onClick={goToLoginPage}>Login</Button>

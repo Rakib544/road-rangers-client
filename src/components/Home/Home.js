@@ -1,6 +1,8 @@
-import { CardMedia, Container, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import { CardMedia, Container, Grid, makeStyles } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { fakeData } from '../../FakeData/data'
 import backgroundImage from '../../images/Bg.png'
+import ServiceCart from '../ServiceCart/ServiceCart';
 const useStyles = makeStyles(() => ({
     backgroundImg: {
         width: '100%',
@@ -18,12 +20,18 @@ const useStyles = makeStyles(() => ({
 
 const Home = () => {
     const classes = useStyles()
+    const [services, setServices] = useState([])
+    useEffect(() => {
+        const data = fakeData;
+        setServices(data)
+    }, [])
+
     return (
         <CardMedia image={backgroundImage} className={classes.backgroundImg}>
-            <Container maxWidth="lg" className={classes.container}>
-                <Typography variant="h4">
-                    This is home page
-                </Typography>
+            <Container maxWidth="md" className={classes.container}>
+                <Grid container spacing={3}>
+                    {services.map(service => <ServiceCart keys="serviceName" service={service} />)}
+                </Grid>
             </Container>
         </CardMedia>
     );

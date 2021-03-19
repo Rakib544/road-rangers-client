@@ -19,7 +19,7 @@ const GetMenuButtons = () => {
     const goContactPage = () => {
         history.push(`/contact`)
     }
-    const goToDirectionPage = () => {
+    const goToDestinationPage = () => {
         history.push(`/destination`)
     }
     const goToBlogPage = () => {
@@ -28,7 +28,7 @@ const GetMenuButtons = () => {
     return (
         <ButtonGroup variant="outlined">
             <Button onClick={goToHomePage} className={classes.button}>Home</Button>
-            <Button onClick={goToDirectionPage} className={classes.button}>Destination</Button>
+            <Button onClick={goToDestinationPage} className={classes.button}>Destination</Button>
             <Button onClick={goToBlogPage} className={classes.button}>Blog</Button>
             <Button onClick ={goContactPage} className={classes.button}>Contact</Button>
             <Button onClick={goToLoginPage} className={classes.button}>Login</Button>

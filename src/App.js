@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/contact">
               <Contact />
             </Route>
-            <Route path="/destination">
+            <Route path="/destination/:serviceType">
               <Destination />
             </Route>
             <Route path="/login">
