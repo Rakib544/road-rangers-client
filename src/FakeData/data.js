@@ -7,6 +7,18 @@ export const fakeData = [
             {
                 'totalPassenger' : '2',
                 'cost' : '99'
+            },
+            {
+                'totalPassenger' : '2',
+                'cost' : '99'
+            },
+            {
+                'totalPassenger' : '2',
+                'cost' : '99'
+            },
+            {
+                'totalPassenger' : '2',
+                'cost' : '99'
             }
         ]
     },
@@ -18,7 +30,27 @@ export const fakeData = [
             {
                 'totalPassenger' : '4',
                 'cost' : '140'
-            }
+            },
+            {
+                'totalPassenger' : '4',
+                'cost' : '140'
+            },
+            {
+                'totalPassenger' : '4',
+                'cost' : '140'
+            },
+            {
+                'totalPassenger' : '4',
+                'cost' : '140'
+            },
+            {
+                'totalPassenger' : '4',
+                'cost' : '140'
+            },
+            {
+                'totalPassenger' : '4',
+                'cost' : '140'
+            },
         ]
     },
     {
@@ -29,7 +61,19 @@ export const fakeData = [
             {
                 'totalPassenger' : '8',
                 'cost' : '250'
-            }
+            },
+            {
+                'totalPassenger' : '8',
+                'cost' : '250'
+            },
+            {
+                'totalPassenger' : '8',
+                'cost' : '250'
+            },
+            {
+                'totalPassenger' : '8',
+                'cost' : '250'
+            },
         ]
     },
     {
@@ -40,7 +84,15 @@ export const fakeData = [
             {
                 'totalPassenger' : '15',
                 'cost' : '170'
-            }
+            },
+            {
+                'totalPassenger' : '15',
+                'cost' : '170'
+            },
+            {
+                'totalPassenger' : '15',
+                'cost' : '170'
+            },
         ]
     }
 ]
