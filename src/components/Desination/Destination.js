@@ -2,7 +2,9 @@ import { Button, Container, Grid, makeStyles, Paper, TextField, Typography } fro
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { fakeData } from '../../FakeData/data';
+import GoogleMap from '../Map/GoogleMap';
 import SearchResultCart from '../SearchResultCart/SarchResultCart';
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -81,7 +83,7 @@ const Destination = () => {
                         )
                 }
                 <Grid item lg="8">
-                    <h2>Google Maps</h2>
+                    <GoogleMap />
                 </Grid>
             </Grid>
         </Container>
@@ -89,3 +91,4 @@ const Destination = () => {
 };
 
 export default Destination;
+

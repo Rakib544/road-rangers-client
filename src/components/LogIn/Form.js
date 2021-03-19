@@ -1,5 +1,7 @@
 import { Button, makeStyles, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../../App';
+import { handleGoogleSignIn, initializedLogInFrameWork } from './LogInManager';
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -25,6 +27,7 @@ const Form = () => {
     const classes = useStyles();
     const [user, setUser] = useState({ name: '', email: '', password: '', confirm_password: '' })
     const [inputError, setInputError] = useState({ emailError: false, passwordError: false, confirmPassWordError: false })
+    const [loggedUser, setLoggedUser] = useContext(UserContext)
 
     const toggleForm = () => {
         setaNewUser(!newUser)
@@ -48,8 +51,13 @@ const Form = () => {
             const newUser = { ...user }
             newUser[e.target.name] = e.target.value
             setUser(newUser)
-
         }
+    }
+
+    initializedLogInFrameWork()
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+        .then(res => setLoggedUser(res.user))
     }
 
     const handleSubmit = e => {
@@ -59,6 +67,7 @@ const Form = () => {
                 const newInputError = {...inputError}
                 newInputError.confirmPassWordError = false
                 setInputError(newInputError)
+                
             }
             else {
                 const newInputError = {...inputError}
@@ -67,7 +76,7 @@ const Form = () => {
             }
         }
         if(!newUser && user.email && user.password) {
-            
+
         }
     }
     return (
@@ -86,7 +95,7 @@ const Form = () => {
                     : <Typography variant="subtitle1" align="center">Don't have an account ? <strong className={classes.strong} onClick={toggleForm}>Create an account</strong></Typography>
             }
             <Typography variant="subtitle1" color="primary" align="center">Or</Typography>
-            <Button variant="contained" color="primary" className={classes.button}>Sign in with google</Button>
+            <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}>Sign in with google</Button>
         </form>
     );
 };
