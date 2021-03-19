@@ -10,9 +10,9 @@ import Login from './components/LogIn/Login';
 export const UserContext = createContext()
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState({})
+  const [loggedUser, setIsLoggedIn] = useState({})
   return (
-    <UserContext.Provider value={[isLoggedIn, setIsLoggedIn]}>
+    <UserContext.Provider value={[loggedUser, setIsLoggedIn]}>
       <BrowserRouter>
         <Header />
         <Switch>
