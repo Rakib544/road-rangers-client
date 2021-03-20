@@ -4,17 +4,21 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(3),
         margin: '10px 0'
+    },
+    mr : {
+        marginRight: '5px'
     }
 }))
 
 const SearchResultCart = ({ selectedService }) => {
     const { serviceName, serviceImage, availableService } = selectedService;
+    const {totalPassenger, cost, passengerIcon} = availableService[0]
     const classes = useStyles()
     return (
         <Paper className={classes.paper}>
-            <Grid container item lg='12'>
+            <Grid container item lg='12' alignItems="center">
                 <Grid item lg="3">
-                    <ButtonBase>
+                    <ButtonBase className={classes.mr}>
                         <img src={serviceImage} alt={serviceName} style={{ width: '100%' }} />
                     </ButtonBase>
                 </Grid>
@@ -22,10 +26,10 @@ const SearchResultCart = ({ selectedService }) => {
                     {serviceName}
                 </Grid>
                 <Grid item lg="3">
-                    {availableService[0].totalPassenger}
+                <img src={passengerIcon} alt="" style={{height: '30px'}} /> {totalPassenger}
                 </Grid>
                 <Grid item lg="3">
-                    $ {availableService[0].cost}
+                    $ {cost}
                 </Grid>
             </Grid>
         </Paper>
