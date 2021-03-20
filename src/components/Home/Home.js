@@ -5,20 +5,25 @@ import bgImage from '../../images/rakib.jpg'
 import ServiceCart from '../ServiceCart/ServiceCart';
 const useStyles = makeStyles(() => ({
     backgroundImg: {
-        width: '100%',
-        height: '100%',
+        height: '100vh',
+        width: '100vw',
         objectFit: 'contain',
+        "@media (max-width: 900px)": {
+            height: '170vh',
+        },
 
     },
     container: {
-        height: '100vh',
-        width: '100vw',
+        paddingTop: '200px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
+        "@media (max-width: 900px)": {
+            paddingTop: '150px',
+        },        
     },
     bg: {
+        height: '100%',
         backgroundColor: 'rgba(0,0,0,0.5)'  
     }
 }))

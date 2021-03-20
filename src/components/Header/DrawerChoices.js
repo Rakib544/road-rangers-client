@@ -26,7 +26,7 @@ const GetDrawerChoices = () => {
         history.push(`/contact`)
     }
     const goToDestinationPage = () => {
-        history.push(`/destination`)
+        history.push(`/destination/bike`)
     }
     const goToBlogPage = () => {
         history.push(`/blog`)
