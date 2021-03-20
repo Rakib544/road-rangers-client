@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { fakeData } from '../../FakeData/data';
 import GoogleMap from '../Map/GoogleMap';
 import SearchResultCart from '../SearchResultCart/SarchResultCart';
+import { Timeline } from 'rsuite';
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +21,7 @@ const Destination = () => {
     const classes = useStyles()
     const { serviceType } = useParams()
     const [selectedService, setSelectedService] = useState({})
-    const [destination, setDestination] = useState({ pickFrom: '', pickTo: '' })
+    const [destination, setDestination] = useState({ pickFrom: '', pickTo: '', pickTime: '' })
     const [showSearchPage, setShowSearchPage] = useState(true)
 
     useEffect(() => {
@@ -43,18 +44,11 @@ const Destination = () => {
                     showSearchPage
                         ? (
                             <>
-                                <Grid item lg="4">
+                                <Grid item lg="4" md="4" sm="12" xs="12">
                                     <Paper className={classes.paper}>
-                                        <TextField id="standard-basic" name="pickFrom" label="Pick From" className={classes.textField} onBlur={handleBlur} />
-                                        <TextField id="standard-basic" name="pickTo" label="Pick To" className={classes.textField} onBlur={handleBlur} />
-                                        <TextField
-                                            label="Pick Up Time"
-                                            type="datetime-local"
-                                            className={classes.textField}
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                        />
+                                        <TextField name="pickFrom" label="Pick From" className={classes.textField} onBlur={handleBlur} />
+                                        <TextField name="pickTo" label="Pick To" className={classes.textField} onBlur={handleBlur} />
+                                        <TextField name="pickTime" label="Pick Up Time" type="datetime-local" className={classes.textField} InputLabelProps={{ shrink: true, }} onBlur={handleBlur} />
                                         <Button variant="contained" color="primary" onClick={() => setShowSearchPage(false)}>Search</Button>
                                     </Paper>
                                 </Grid>
@@ -62,14 +56,13 @@ const Destination = () => {
                         )
                         : (
                             <>
-                                <Grid item lg="4">
+                                <Grid item lg="4" md="4" sm="12" xs="12">
                                     <Paper className={classes.paper}>
-                                        <Typography variant="h6" color="primary">
-                                            {destination.pickFrom}
-                                        </Typography>
-                                        <Typography variant="h6" color="primary">
-                                            {destination.pickTo}
-                                        </Typography>
+                                        <div style={{ backgroundColor: '#400CCC', padding: '10px', borderRadius: '10px', color: 'white' }}>
+                                            <Typography variant="h6"> {destination.pickFrom} </Typography>
+                                            <Typography variant="h6"> {destination.pickTo} </Typography>
+                                            <Typography variant="subtitle1"> {destination.pickTime} </Typography>
+                                        </div>
                                         <Grid container direction="column">
                                             {
                                                 availableService && availableService.map(service => <SearchResultCart selectedService={selectedService} key={service.serviceType} />)
@@ -80,7 +73,7 @@ const Destination = () => {
                             </>
                         )
                 }
-                <Grid item lg="8">
+                <Grid item lg="8" md="8" sm="12" xs="12">
                     <GoogleMap />
                 </Grid>
             </Grid>

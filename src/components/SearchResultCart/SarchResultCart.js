@@ -16,19 +16,19 @@ const SearchResultCart = ({ selectedService }) => {
     const classes = useStyles()
     return (
         <Paper className={classes.paper}>
-            <Grid container item lg='12' alignItems="center">
-                <Grid item lg="3">
+            <Grid container item lg='12' alignItems="center" justify="space-between">
+                <Grid item lg="3" md="3" sm="3" xs="3">
                     <ButtonBase className={classes.mr}>
                         <img src={serviceImage} alt={serviceName} style={{ width: '100%' }} />
                     </ButtonBase>
                 </Grid>
-                <Grid item lg="3">
+                <Grid item lg="3" md="3" sm="3" xs="3">
                     {serviceName}
                 </Grid>
-                <Grid item lg="3">
-                <img src={passengerIcon} alt="" style={{height: '30px'}} /> {totalPassenger}
+                <Grid item lg="3" md="3" sm="3" xs="3">
+                <img src={passengerIcon} alt="" style={{height: '25px'}} /> {totalPassenger}
                 </Grid>
-                <Grid item lg="3">
+                <Grid item lg="3" md="3" sm="3" xs="3">
                     $ {cost}
                 </Grid>
             </Grid>

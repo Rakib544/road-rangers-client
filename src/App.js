@@ -6,6 +6,7 @@ import Destination from './components/Desination/Destination';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/LogIn/Login';
+import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './components/PrivateRote/PrivateRoute';
 
 export const UserContext = createContext()
@@ -34,6 +35,9 @@ const App = () => {
           </PrivateRoute>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </BrowserRouter>

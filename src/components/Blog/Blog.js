@@ -1,9 +1,15 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 
 const Blog = () => {
     return (
-        <div>
-            <h2>This is blog page</h2>
+        <div style={{paddingTop: '100px'}}>
+            <Typography variant="h2" color="primary" align="center">
+                This is Blog Page
+            </Typography>
+            <Typography variant="h6" color="primary" align="center">
+                This is page will coming soon...
+            </Typography>
         </div>
     );
 };
