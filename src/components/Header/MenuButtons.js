@@ -44,7 +44,7 @@ const GetMenuButtons = () => {
                 loggedUser.email
                     ? (
                         <>
-                            <Button className={classes.button}>{loggedUser.displayName}</Button>
+                            <Button className={classes.button}>{loggedUser.displayName || loggedUser.email}</Button>
                             <IconButton onClick={handleSignOut} className={classes.button}><ExitToAppIcon /></IconButton>
                         </>
                     )

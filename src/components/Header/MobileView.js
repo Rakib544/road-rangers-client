@@ -3,6 +3,7 @@ import { useState } from "react";
 import GetDrawerChoices from "./DrawerChoices";
 import Logo from "./Logo";
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles(() => ({ 
     toolbar: {
@@ -20,6 +21,11 @@ const useStyles = makeStyles(() => ({
 
 
 const DisplayMobile = () => {
+    const history = useHistory();
+
+    const goToHomePage = () => {
+        history.push(`/home`)
+    }
     const classes = useStyles()
     const [drawerOpen, setDrawerOpen] = useState(false)
     const handleDrawerOpen = () =>
@@ -51,7 +57,7 @@ const DisplayMobile = () => {
                 <div className={classes.drawerContainer} >{<GetDrawerChoices />}</div>
             </Drawer>
 
-            <div className={classes.logo}>
+            <div className={classes.logo} onClick={goToHomePage}>
                 { <Logo />}
             </div>
         </Toolbar>

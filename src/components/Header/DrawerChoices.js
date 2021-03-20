@@ -44,7 +44,7 @@ const GetDrawerChoices = () => {
                 loggedUser.email
                     ? (
                         <>
-                            <Button className={classes.buttonStyle}>{loggedUser.displayName}</Button>
+                            <Button className={classes.buttonStyle}>{loggedUser.displayName || loggedUser.email}</Button>
                             <IconButton onClick={handleSignOut} className={classes.buttonStyle}><ExitToAppIcon /></IconButton>
                         </>
                     )
