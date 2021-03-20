@@ -1,7 +1,7 @@
 import { Button, makeStyles, TextField, Typography } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../App';
-import { handleGoogleSignIn, initializedLogInFrameWork } from './LogInManager';
+import { createUserWithEmailAndPassword, handleGoogleSignIn, initializedLogInFrameWork, singInUserWithEmailAndPassword } from './LogInManager';
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 const Form = () => {
     const [newUser, setaNewUser] = useState(false)
     const classes = useStyles();
-    const [user, setUser] = useState({ name: '', email: '', password: '', confirm_password: '' })
+    const [user, setUser] = useState({ name: '', email: '', password: '', confirm_password: '', error: '', success: false })
     const [inputError, setInputError] = useState({ emailError: false, passwordError: false, confirmPassWordError: false })
     const [loggedUser, setLoggedUser] = useContext(UserContext)
 
@@ -55,29 +55,53 @@ const Form = () => {
     }
 
     initializedLogInFrameWork()
+
+    //handling google signIn
     const googleSignIn = () => {
         handleGoogleSignIn()
-        .then(res => setLoggedUser(res.user))
+            .then(res => {
+                setLoggedUser(res.user)
+            })
+            .catch(err => setLoggedUser(err))
     }
 
     const handleSubmit = e => {
         e.preventDefault()
         if (newUser && user.email && user.password) {
-            if(user.password === user.confirm_password) {
-                const newInputError = {...inputError}
+            if (user.password === user.confirm_password) {
+                const newInputError = { ...inputError }
                 newInputError.confirmPassWordError = false
                 setInputError(newInputError)
-                
+
+                //signUp with email and password functionality
+                createUserWithEmailAndPassword(user.name, user.email, user.password)
+                    .then(res => {
+                        setUser(res)
+                        setLoggedUser(res)
+                    })
+                    .catch(err => {
+                        setUser(err)
+                        setLoggedUser(err)
+                    })
             }
             else {
-                const newInputError = {...inputError}
+                const newInputError = { ...inputError }
                 newInputError.confirmPassWordError = true
                 setInputError(newInputError)
             }
         }
-        if(!newUser && user.email && user.password) {
-
+        if (!newUser && user.email && user.password) {
+            singInUserWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    setUser(res)
+                    setLoggedUser(res)
+                })
+                .catch(err => {
+                    setUser(err)
+                    setLoggedUser(err)
+                })
         }
+        e.target.reset()
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -96,6 +120,16 @@ const Form = () => {
             }
             <Typography variant="subtitle1" color="primary" align="center">Or</Typography>
             <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}>Sign in with google</Button>
+            
+            <br />
+            <Typography variant="subtitle1" color="secondary">
+                {user.error}
+            </Typography>
+            {
+                user.success && <Typography variant="subtitle1" color="primary" align="center">
+                    User {newUser ? 'Created' : 'Log In'} Successfully
+          </Typography>
+            }
         </form>
     );
 };
