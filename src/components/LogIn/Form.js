@@ -2,6 +2,8 @@ import { Button, makeStyles, TextField, Typography } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faGoogle} from '@fortawesome/free-brands-svg-icons' 
 import { createUserWithEmailAndPassword, handleGoogleSignIn, initializedLogInFrameWork, singInUserWithEmailAndPassword } from './LogInManager';
 
 const useStyles = makeStyles(theme => ({
@@ -119,8 +121,9 @@ const Form = () => {
                     ? <Typography variant="subtitle1" align="center">Already have an account ? <strong className={classes.strong} onClick={toggleForm} >SignIn here</strong></Typography>
                     : <Typography variant="subtitle1" align="center">Don't have an account ? <strong className={classes.strong} onClick={toggleForm}>Create an account</strong></Typography>
             }
-            <Typography variant="subtitle1" color="primary" align="center">Or</Typography>
-            <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}>Sign in with google</Button>
+            
+            <Typography variant="subtitle1" color="primary" align="center">Or</Typography> 
+            <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} /> Sign in with google</Button>
 
             <br />
             <Typography variant="subtitle1" color="secondary" align="center">

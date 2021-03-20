@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const SearchResultCart = ({ selectedService }) => {
-    const { serviceName, serviceImage, availableService } = selectedService;
-    const {totalPassenger, cost, passengerIcon} = availableService[0]
+const SearchResultCart = ({ service, selectedService }) => {
+    const { serviceName, serviceImage } = selectedService;
+    const {totalPassenger, cost, passengerIcon} = service;
     const classes = useStyles()
     return (
         <Paper className={classes.paper}>

@@ -45,8 +45,7 @@ const Destination = () => {
                         ? (
                             <>
                                 <Grid item lg="4" md="4" sm="12" xs="12">
-                                    <Paper className={classes.paper}>
-                                       
+                                    <Paper className={classes.paper}> 
                                         <TextField name="pickFrom" label="Pick From" className={classes.textField} onBlur={handleBlur} />
                                         <TextField name="pickTo" label="Pick To" className={classes.textField} onBlur={handleBlur} />
                                         <TextField name="pickTime" label="Pick Up Time" type="datetime-local" className={classes.textField} InputLabelProps={{ shrink: true, }} onBlur={handleBlur} />
@@ -64,7 +63,7 @@ const Destination = () => {
                                         </div>
                                         <Grid container direction="column">
                                             {
-                                                availableService && availableService.map(service => <SearchResultCart selectedService={selectedService} key={service.serviceType} />)
+                                                availableService && availableService.map(service => <SearchResultCart service={service} selectedService={selectedService} key={service.serviceType} />)
                                             }
                                         </Grid>
                                     </Paper>
