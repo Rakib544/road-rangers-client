@@ -48,10 +48,8 @@ const Destination = () => {
                                         <TextField id="standard-basic" name="pickFrom" label="Pick From" className={classes.textField} onBlur={handleBlur} />
                                         <TextField id="standard-basic" name="pickTo" label="Pick To" className={classes.textField} onBlur={handleBlur} />
                                         <TextField
-                                            id="datetime-local"
-                                            label="Next appointment"
+                                            label="Pick Up Time"
                                             type="datetime-local"
-                                            defaultValue="2017-05-24T10:30"
                                             className={classes.textField}
                                             InputLabelProps={{
                                                 shrink: true,
