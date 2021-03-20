@@ -85,10 +85,6 @@ const Form = () => {
                         setUser(res)
                         setLoggedUser(res)
                     })
-                    // .catch(err => {
-                    //     setUser(err)
-                    //     setLoggedUser(err)
-                    // })
             }
             else {
                 const newInputError = { ...inputError }
@@ -101,15 +97,13 @@ const Form = () => {
                 .then(res => {
                     setUser(res)
                     setLoggedUser(res)
-                    history.replace(from);
-                })
-                .catch(err => {
-                    setUser(err)
-                    setLoggedUser(err)
+                    history.replace(from)
                 })
         }
         e.target.reset()
     }
+
+    console.log(user.error)
     return (
         <form onSubmit={handleSubmit}>
             {newUser ? <Typography variant="h4">Create an Account</Typography> : <Typography variant="h4">Login</Typography>}
@@ -129,14 +123,15 @@ const Form = () => {
             <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}>Sign in with google</Button>
 
             <br />
-            <Typography variant="subtitle1" color="secondary">
+            <Typography variant="subtitle1" color="secondary" align="center">
                 {user.error}
             </Typography>
             {
                 user.success && <Typography variant="subtitle1" color="primary" align="center">
                     User {newUser ? 'Created' : 'Log In'} Successfully
-          </Typography>
+                </Typography>
             }
+
         </form>
     );
 };

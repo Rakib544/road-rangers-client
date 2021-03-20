@@ -8,6 +8,7 @@ const useStyles = makeStyles(() => ({
         width: '100%',
         height: '100%',
         objectFit: 'contain',
+
     },
     container: {
         height: '100vh',
@@ -15,6 +16,10 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        
+    },
+    bg: {
+        backgroundColor: 'rgba(0,0,0,0.5)'  
     }
 }))
 
@@ -28,10 +33,12 @@ const Home = () => {
 
     return (
         <CardMedia image={bgImage} className={classes.backgroundImg}>
-            <Container maxWidth="md" className={classes.container}>
-                <Grid container spacing={3}>
-                    {services.map(service => <ServiceCart keys="serviceName" service={service} />)}
-                </Grid>
+            <Container className={classes.bg}>
+                <Container maxWidth="md" className={classes.container}>
+                    <Grid container spacing={3}>
+                        {services.map(service => <ServiceCart keys="serviceName" service={service} />)}
+                    </Grid>
+                </Container>
             </Container>
         </CardMedia>
     );

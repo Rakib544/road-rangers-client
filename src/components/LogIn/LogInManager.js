@@ -48,22 +48,17 @@ export const singInUserWithEmailAndPassword = (email, password) => {
             const newUser = res.user
             newUser.success = true;
             newUser.error = '';
+            console.log(newUser)
             return newUser;
+
         })
         .catch(err => {
             const newUser = {}
             newUser.success = false;
             newUser.error = err.message;
+            console.log(err)
             return newUser
         })
-}
-
-export const signOut = () => {
-    firebase.auth().signOut()
-    .then(res => {
-        const signOutUser = { name: '', email: '', password: '', confirm_password: '', error: '', success: false }
-        return signOutUser
-    })
 }
 
 export const updateUserName = name => {
