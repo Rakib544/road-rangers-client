@@ -1,5 +1,6 @@
 import { Button, makeStyles, TextField, Typography } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
 import { createUserWithEmailAndPassword, handleGoogleSignIn, initializedLogInFrameWork, singInUserWithEmailAndPassword } from './LogInManager';
 
@@ -53,7 +54,9 @@ const Form = () => {
             setUser(newUser)
         }
     }
-
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
     initializedLogInFrameWork()
 
     //handling google signIn
@@ -61,6 +64,7 @@ const Form = () => {
         handleGoogleSignIn()
             .then(res => {
                 setLoggedUser(res.user)
+                history.replace(from);
             })
             .catch(err => setLoggedUser(err))
     }
@@ -95,6 +99,7 @@ const Form = () => {
                 .then(res => {
                     setUser(res)
                     setLoggedUser(res)
+                    history.replace(from);
                 })
                 .catch(err => {
                     setUser(err)
@@ -120,7 +125,7 @@ const Form = () => {
             }
             <Typography variant="subtitle1" color="primary" align="center">Or</Typography>
             <Button variant="contained" color="primary" className={classes.button} onClick={googleSignIn}>Sign in with google</Button>
-            
+
             <br />
             <Typography variant="subtitle1" color="secondary">
                 {user.error}
