@@ -28,7 +28,7 @@ const Form = () => {
     const classes = useStyles();
     const [user, setUser] = useState({ name: '', email: '', password: '', confirm_password: '', error: '', success: false })
     const [inputError, setInputError] = useState({ emailError: false, passwordError: false, confirmPassWordError: false })
-    const [setLoggedUser] = useContext(UserContext)
+    const [loggedUser, setLoggedUser] = useContext(UserContext)
 
     const toggleForm = () => {
         setaNewUser(!newUser)
@@ -63,10 +63,12 @@ const Form = () => {
     const googleSignIn = () => {
         handleGoogleSignIn()
             .then(res => {
-                setLoggedUser(res.user)
+                setLoggedUser(res)
                 history.replace(from);
             })
-            .catch(err => setLoggedUser(err))
+            .catch(err => {
+                setLoggedUser(err)
+            })
     }
 
     const handleSubmit = e => {
