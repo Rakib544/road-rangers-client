@@ -4,12 +4,13 @@ import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        backgroundColor: '#FFFFFF'
     },
     img: {
         width: '160px',
         height: '140px'
-    }
+    },
 }))
 
 const ServiceCart = ({ service }) => {

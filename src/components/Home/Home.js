@@ -1,7 +1,7 @@
 import { CardMedia, Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { fakeData } from '../../FakeData/data'
-import backgroundImage from '../../images/Bg.png'
+import bgImage from '../../images/rakib.jpg'
 import ServiceCart from '../ServiceCart/ServiceCart';
 const useStyles = makeStyles(() => ({
     backgroundImg: {
@@ -27,7 +27,7 @@ const Home = () => {
     }, [])
 
     return (
-        <CardMedia image={backgroundImage} className={classes.backgroundImg}>
+        <CardMedia image={bgImage} className={classes.backgroundImg}>
             <Container maxWidth="md" className={classes.container}>
                 <Grid container spacing={3}>
                     {services.map(service => <ServiceCart keys="serviceName" service={service} />)}
