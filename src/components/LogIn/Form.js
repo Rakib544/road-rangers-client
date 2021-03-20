@@ -85,10 +85,10 @@ const Form = () => {
                         setUser(res)
                         setLoggedUser(res)
                     })
-                    .catch(err => {
-                        setUser(err)
-                        setLoggedUser(err)
-                    })
+                    // .catch(err => {
+                    //     setUser(err)
+                    //     setLoggedUser(err)
+                    // })
             }
             else {
                 const newInputError = { ...inputError }
