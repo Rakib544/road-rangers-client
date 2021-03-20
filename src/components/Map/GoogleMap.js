@@ -16,9 +16,7 @@ class GoogleMap extends React.Component {
                     name={'Current location'} />
 
                 <InfoWindow onClose={this.onInfoWindowClose}>
-                    <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                    </div>
+                    
                 </InfoWindow>
             </Map>
         </div>
