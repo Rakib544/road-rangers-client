@@ -1,7 +1,19 @@
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, IconButton, makeStyles } from "@material-ui/core";
+import { useContext } from "react";
 import { useHistory } from "react-router";
+import { UserContext } from "../../App";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+const useStyles = makeStyles(() => ({
+    buttonStyle: {
+        border: '0',
+        color: '#fff'
+    }
+}))
 
 const GetDrawerChoices = () => {
+    const [loggedUser, setLoggedUser] = useContext(UserContext) 
+    const classes = useStyles()
     const history = useHistory();
 
     const goToHomePage = () => {
@@ -19,13 +31,25 @@ const GetDrawerChoices = () => {
     const goToBlogPage = () => {
         history.push(`/blog`)
     }
+    const handleSignOut = () => {
+        setLoggedUser({})
+    }
     return (
-        <ButtonGroup orientation="vertical" color="primary" variant="outlined">
-            <Button onClick={goToHomePage}>Home</Button>
-            <Button onClick={goToDestinationPage}>Direction</Button>
-            <Button onClick={goToBlogPage}>Blog</Button>
-            <Button onClick ={goContactPage}>Contact</Button>
-            <Button onClick={goToLoginPage}>Login</Button>
+        <ButtonGroup orientation="vertical" >
+            <Button className={classes.buttonStyle} onClick={goToHomePage}>Home</Button>
+            <Button className={classes.buttonStyle} onClick={goToDestinationPage}>Direction</Button>
+            <Button className={classes.buttonStyle} onClick={goToBlogPage}>Blog</Button>
+            <Button className={classes.buttonStyle} onClick={goContactPage}>Contact</Button>
+            {
+                loggedUser.email
+                    ? (
+                        <>
+                            <Button className={classes.buttonStyle}>{loggedUser.displayName}</Button>
+                            <IconButton onClick={handleSignOut} className={classes.buttonStyle}><ExitToAppIcon /></IconButton>
+                        </>
+                    )
+                    : <Button onClick={goToLoginPage} className={classes.buttonStyle}>Login</Button>
+            }
         </ButtonGroup>
     )
 

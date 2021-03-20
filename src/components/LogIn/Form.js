@@ -28,7 +28,7 @@ const Form = () => {
     const classes = useStyles();
     const [user, setUser] = useState({ name: '', email: '', password: '', confirm_password: '', error: '', success: false })
     const [inputError, setInputError] = useState({ emailError: false, passwordError: false, confirmPassWordError: false })
-    const [loggedUser, setLoggedUser] = useContext(UserContext)
+    const [setLoggedUser] = useContext(UserContext)
 
     const toggleForm = () => {
         setaNewUser(!newUser)

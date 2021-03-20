@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { useHistory } from "react-router";
 import { UserContext } from "../../App";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { signOut } from "../LogIn/LogInManager";
 const useStyles = makeStyles(() => ({
     button: {
         color: '#fff',
+        border: '0'
     },
 }))
 
@@ -31,12 +31,9 @@ const GetMenuButtons = () => {
         history.push(`/blog`)
     }
 
-    const handleSignOut = () => [
-        signOut()
-        .then(res => {
-            setLoggedUser(res)
-        })
-    ]
+    const handleSignOut = () => {
+        setLoggedUser({})
+    }
     return (
         <ButtonGroup variant="outlined">
             <Button onClick={goToHomePage} className={classes.button}>Home</Button>

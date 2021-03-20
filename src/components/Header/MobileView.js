@@ -6,13 +6,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(() => ({ 
     toolbar: {
-        display: "flex"
+        display: "flex",
     },
     logo: {
         marginLeft: 'auto'
     },
     drawerContainer: {
         padding: "20px 30px",
+        backgroundColor: '#400CCC',
+        height: '100%'
     },
 }))
 
